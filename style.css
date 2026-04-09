@@ -2,14 +2,14 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Segoe UI', sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 body {
-    background-color: #f4f6f9;
+    background-color: #f0f2f5;
 }
 
-.dashboard-container {
+.container {
     display: flex;
     min-height: 100vh;
 }
@@ -17,155 +17,121 @@ body {
 /* Sidebar */
 .sidebar {
     width: 250px;
-    background-color: #34495e;
+    background-color: #343a40;
+    color: white;
+    padding: 20px 0;
+}
+
+.logo {
+    padding: 0 20px 30px;
+    font-size: 24px;
+    font-weight: bold;
+    color: #8cc63f;
+}
+
+.logo span {
     color: white;
 }
 
-.sidebar-header {
-    background-color: #8cc63f;
-    padding: 20px;
-    text-align: center;
-}
-
-.user-profile {
-    padding: 20px;
-    text-align: center;
-    border-bottom: 1px solid #2c3e50;
-}
-
-.sidebar-nav ul {
+.sidebar ul {
     list-style: none;
-    margin-top: 20px;
 }
 
-.sidebar-nav li {
+.sidebar li {
     padding: 15px 20px;
     cursor: pointer;
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    color: #b0bec5;
     transition: 0.3s;
+    border-bottom: 1px solid #454d55;
+    color: #adb5bd;
 }
 
-.sidebar-nav li.active, .sidebar-nav li:hover {
-    background-color: #2c3e50;
+.sidebar li:hover, .sidebar li.active {
+    background-color: #495057;
     color: white;
-    border-left: 4px solid #8cc63f;
+}
+
+.sidebar li i {
+    margin-right: 10px;
 }
 
 /* Main Content */
 .main-content {
     flex: 1;
+    padding: 30px;
 }
 
-.top-header {
-    background-color: white;
-    padding: 15px 30px;
+header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    margin-bottom: 30px;
 }
 
-.logo {
-    font-weight: bold;
-    font-size: 18px;
+.header-info h1 {
+    font-size: 24px;
     color: #333;
 }
 
-.logout {
-    text-decoration: none;
-    color: #555;
+.header-info p {
+    color: #777;
     font-size: 14px;
 }
 
-/* Info Baris Atas */
-.top-info-row {
-    display: flex;
-    justify-content: space-between;
-    padding: 20px 30px;
-}
-
-.dashboard-title h1 { font-size: 20px; font-weight: normal; }
-.dashboard-title p { font-size: 12px; color: #888; }
-
-.top-boxes { display: flex; gap: 10px; }
-.info-box { background: white; padding: 10px 20px; border-radius: 4px; text-align: center; min-width: 140px; }
-.box-label { font-size: 11px; color: #888; display: block; margin-bottom: 5px; }
-.box-value { font-weight: bold; font-size: 14px; }
-.text-green { color: #8cc63f; }
-.pump-status-box { border: 1px solid #8cc63f; }
-
-/* Metrics */
-.metrics-row {
-    display: flex;
-    padding: 0 30px;
-    gap: 15px;
-    margin-bottom: 20px;
-}
-
-.metric-card {
-    flex: 1;
-    background: white;
-    padding: 20px;
-    border-radius: 4px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-}
-
-.metric-card.active-metric { background-color: #8cc63f; color: white; }
-.metric-card.active-metric .card-icon, .metric-card.active-metric p { color: white; }
-
-.card-icon { font-size: 22px; color: #444; }
-.card-data { text-align: right; }
-.card-data h3 { font-size: 22px; }
-.card-data p { font-size: 11px; color: #777; }
-
-/* Power & Battery Section */
-.power-row {
-    display: flex;
-    padding: 0 30px;
+/* Grid Layout */
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 20px;
 }
 
-.power-box {
-    flex: 1;
+.card {
     background: white;
-    padding: 20px;
-    border-radius: 6px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-}
-
-.power-box.panel-surya { border-top: 4px solid #f39c12; }
-.power-box.baterai { border-top: 4px solid #8cc63f; }
-
-.power-header {
+    padding: 25px;
+    border-radius: 8px;
     display: flex;
+    flex-direction: column;
     align-items: center;
-    gap: 10px;
-    padding-bottom: 10px;
-    border-bottom: 1px solid #eee;
-    margin-bottom: 20px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    transition: transform 0.2s;
 }
 
-.power-header h4 { font-size: 14px; text-transform: uppercase; color: #555; }
-
-.power-content { text-align: center; }
-.big-value { font-size: 45px; font-weight: bold; }
-.unit { font-size: 18px; color: #999; font-weight: normal; }
-
-.battery-content {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
+.card:hover {
+    transform: translateY(-5px);
 }
 
-.battery-divider { width: 1px; height: 50px; background: #eee; }
-.battery-sub h3 { font-size: 28px; }
+.card-icon {
+    font-size: 30px;
+    margin-bottom: 15px;
+    color: #555;
+}
 
-@media (max-width: 1024px) {
-    .metrics-row, .power-row { flex-direction: column; }
+.card-data h2 {
+    font-size: 28px;
+    margin-bottom: 5px;
+    color: #222;
+}
+
+.card-data span {
+    color: #888;
+    font-weight: 500;
+}
+
+.sub-data {
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px solid #eee;
+    color: #666;
+}
+
+/* Warna Khusus seperti di Gambar */
+.card-green {
+    background-color: #8cc63f;
+    color: white;
+}
+
+.card-green .card-icon, 
+.card-green .card-data h2, 
+.card-green .card-data span {
+    color: white;
 }

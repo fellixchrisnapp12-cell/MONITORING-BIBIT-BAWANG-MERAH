@@ -1,37 +1,38 @@
-/**
- * Logika Dashboard Monitoring Bawang Merah
- */
+// Fungsi untuk simulasi update data
+function updateData() {
+    // Simulasi data (Ganti bagian ini dengan fetch API dari sensor Anda)
+    const data = {
+        suhu: (25 + Math.random() * 5).toFixed(2),
+        phAir: (6.5 + Math.random() * 1).toFixed(1),
+        kelembapan: (70 + Math.random() * 10).toFixed(0),
+        panelWatt: (50 + Math.random() * 20).toFixed(1),
+        panelVolt: (12 + Math.random() * 2).toFixed(1),
+        panelAmpere: (2 + Math.random() * 1).toFixed(2),
+        bateraiPersen: (85 + Math.random() * 5).toFixed(0),
+        bateraiVolt: (13.2 + Math.random() * 0.5).toFixed(1)
+    };
 
-// 1. Fungsi Update Waktu Real-time
-function updateClock() {
+    // Update elemen HTML
+    document.getElementById('suhu').innerText = data.suhu;
+    document.getElementById('ph-air').innerText = data.phAir;
+    document.getElementById('kelembapan').innerText = data.kelembapan;
+    document.getElementById('panel-watt').innerText = data.panelWatt + " W";
+    document.getElementById('panel-volt').innerText = data.panelVolt + " V";
+    document.getElementById('panel-ampere').innerText = data.panelAmpere + " A";
+    document.getElementById('baterai-persen').innerText = data.bateraiPersen + " %";
+    document.getElementById('baterai-volt').innerText = data.bateraiVolt + " V (Input)";
+}
+
+// Update waktu saat ini
+function updateTime() {
     const now = new Date();
-    
-    // Format Tanggal
-    const days = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'];
-    const dayName = days[now.getDay()];
-    const date = String(now.getDate()).padStart(2, '0');
-    const month = String(now.getMonth() + 1).padStart(2, '0');
-    const year = now.getFullYear();
-    
-    // Format Jam
-    const hours = String(now.getHours()).padStart(2, '0');
-    const minutes = String(now.getMinutes()).padStart(2, '0');
-    const seconds = String(now.getSeconds()).padStart(2, '0');
-
-    document.getElementById('current-date').textContent = `${dayName}, ${date}/${month}/${year}`;
-    document.getElementById('current-time').textContent = `${hours}:${minutes}:${seconds}`;
+    document.getElementById('current-time').innerText = now.toLocaleString('id-ID');
 }
 
-// Jalankan clock setiap detik
-setInterval(updateClock, 1000);
-updateClock();
+// Jalankan fungsi secara berkala
+setInterval(updateData, 3000); // Update data setiap 3 detik
+setInterval(updateTime, 1000); // Update jam setiap detik
 
-// 2. Simulasi Update Data (Opsional)
-// Fungsi ini berguna jika nanti Anda ingin menghubungkan ke API/Sensor sungguhan
-function updateSensorData() {
-    // Di sini Anda bisa menambahkan logika fetch data dari ESP32/Database
-    console.log("Data diperbarui pada: " + new Date().toLocaleTimeString());
-}
-
-// Update data setiap 5 detik
-setInterval(updateSensorData, 5000);
+// Panggil sekali saat load pertama
+updateData();
+updateTime();
