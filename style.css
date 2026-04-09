@@ -135,3 +135,16 @@ header {
 .card-green .card-data span {
     color: white;
 }
+/* Class tambahan untuk status pompa */
+.card-pump-on {
+    background-color: #28a745 !important; /* Hijau Terang */
+    color: white !important;
+}
+
+.card-pump-on .card-icon, 
+.card-pump-on .card-data h2, 
+.card-pump-on .card-data span,
+.card-pump-on .sub-data {
+    color: white !important;
+    border-top-color: rgba(255,255,255,0.3) !important;
+}
