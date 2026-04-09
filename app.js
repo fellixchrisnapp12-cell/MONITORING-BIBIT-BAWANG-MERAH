@@ -1,60 +1,38 @@
-// Fungsi untuk menghasilkan data simulasi
-function fetchData() {
-    // Di masa depan, ganti bagian ini dengan fetch('url-api-esp32')
-    const sensorData = {
-        suhu: (27 + Math.random() * 3).toFixed(2),
-        ph: (6.5 + Math.random() * 0.5).toFixed(1),
-        kelembapan: (75 + Math.random() * 5).toFixed(0),
-        watt: (45 + Math.random() * 10).toFixed(1),
-        voltPanel: (13.5 + Math.random() * 1).toFixed(1),
-        amperePanel: (3.2 + Math.random() * 0.5).toFixed(2),
-        bateraiPersen: (90 + Math.random() * 5).toFixed(0),
-        bateraiVolt: (12.6 + Math.random() * 0.2).toFixed(1),
-        pompa: Math.random() > 0.5 // Random ON atau OFF
+// Fungsi untuk simulasi update data
+function updateData() {
+    // Simulasi data (Ganti bagian ini dengan fetch API dari sensor Anda)
+    const data = {
+        suhu: (25 + Math.random() * 5).toFixed(2),
+        phAir: (6.5 + Math.random() * 1).toFixed(1),
+        kelembapan: (70 + Math.random() * 10).toFixed(0),
+        panelWatt: (50 + Math.random() * 20).toFixed(1),
+        panelVolt: (12 + Math.random() * 2).toFixed(1),
+        panelAmpere: (2 + Math.random() * 1).toFixed(2),
+        bateraiPersen: (85 + Math.random() * 5).toFixed(0),
+        bateraiVolt: (13.2 + Math.random() * 0.5).toFixed(1)
     };
 
-    updateUI(sensorData);
-}
-
-// Fungsi untuk memperbarui tampilan dashboard
-function updateUI(data) {
-    // Update Teks
+    // Update elemen HTML
     document.getElementById('suhu').innerText = data.suhu;
-    document.getElementById('ph-air').innerText = data.ph;
+    document.getElementById('ph-air').innerText = data.phAir;
     document.getElementById('kelembapan').innerText = data.kelembapan;
-    document.getElementById('panel-watt').innerText = data.watt + " W";
-    document.getElementById('panel-volt').innerText = data.voltPanel + " V";
-    document.getElementById('panel-ampere').innerText = data.amperePanel + " A";
+    document.getElementById('panel-watt').innerText = data.panelWatt + " W";
+    document.getElementById('panel-volt').innerText = data.panelVolt + " V";
+    document.getElementById('panel-ampere').innerText = data.panelAmpere + " A";
     document.getElementById('baterai-persen').innerText = data.bateraiPersen + " %";
-    document.getElementById('baterai-volt').innerText = data.bateraiVolt + " V";
-
-    // Update Status Pompa & Warna Kotak
-    const pumpCard = document.getElementById('pump-card');
-    const pumpStatus = document.getElementById('status-pompa');
-    const pumpMsg = document.getElementById('pump-msg');
-
-    if (data.pompa) {
-        pumpStatus.innerText = "ON";
-        pumpMsg.innerText = "Penyiraman Aktif";
-        pumpCard.classList.add('pump-on');
-    } else {
-        pumpStatus.innerText = "OFF";
-        pumpMsg.innerText = "Sistem Standby";
-        pumpCard.classList.remove('pump-on');
-    }
+    document.getElementById('baterai-volt').innerText = data.bateraiVolt + " V (Input)";
 }
 
-// Update Waktu Real-time
-function showTime() {
+// Update waktu saat ini
+function updateTime() {
     const now = new Date();
-    const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit' };
-    document.getElementById('current-time').innerText = now.toLocaleDateString('id-ID', options);
+    document.getElementById('current-time').innerText = now.toLocaleString('id-ID');
 }
 
-// Jalankan sistem
-setInterval(fetchData, 3000); // Perbarui data tiap 3 detik
-setInterval(showTime, 1000);  // Perbarui jam tiap detik
+// Jalankan fungsi secara berkala
+setInterval(updateData, 3000); // Update data setiap 3 detik
+setInterval(updateTime, 1000); // Update jam setiap detik
 
-// Panggil pertama kali saat halaman dibuka
-fetchData();
-showTime();
+// Panggil sekali saat load pertama
+updateData();
+updateTime();
