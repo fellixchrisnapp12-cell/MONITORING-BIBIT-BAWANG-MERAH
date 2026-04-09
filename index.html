@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monitoring Bawang Merah</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <div class="dashboard-container">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h2>OPI</h2>
+            </div>
+            <div class="user-profile">
+                <p>Mario Rossi</p>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li class="active"><i class="fas fa-home"></i> Dashboard</li>
+                    <li><i class="fas fa-user"></i> Profil</li>
+                    <li><i class="fas fa-list"></i> Storico Dati</li>
+                    <li><i class="fas fa-chart-line"></i> Grafici</li>
+                    <li><i class="fas fa-bell"></i> Notifiche</li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <header class="top-header">
+                <div class="page-title">
+                    <div class="logo">evja</div>
+                    <a href="#" class="logout"><i class="fas fa-sign-out-alt"></i> Log out</a>
+                </div>
+            </header>
+
+            <section class="top-info-row">
+                <div class="dashboard-title">
+                    <h1>Dashboard Monitoring</h1>
+                    <p>Home / Bawang Merah</p>
+                </div>
+                
+                <div class="top-boxes">
+                    <div class="info-box">
+                        <span class="box-label">Hari & Tanggal</span>
+                        <div class="box-value" id="current-date">--</div>
+                    </div>
+                    <div class="info-box">
+                        <span class="box-label">Waktu Real-time</span>
+                        <div class="box-value" id="current-time">--:--</div>
+                    </div>
+                    <div class="info-box pump-status-box">
+                        <span class="box-label">Status Pompa Air</span>
+                        <div class="box-value text-green" id="pump-status">AKTIF</div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="metrics-row">
+                <div class="metric-card active-metric">
+                    <i class="fas fa-thermometer-half card-icon"></i>
+                    <div class="card-data">
+                        <h3>22.80</h3>
+                        <p>Suhu (°C)</p>
+                    </div>
+                </div>
+
+                <div class="metric-card">
+                    <i class="fas fa-leaf card-icon"></i>
+                    <div class="card-data">
+                        <h3>65.50</h3>
+                        <p>Kelembapan Tanah (%)</p>
+                    </div>
+                </div>
+
+                <div class="metric-card">
+                    <i class="fas fa-tint card-icon"></i>
+                    <div class="card-data">
+                        <h3>6.5</h3>
+                        <p>pH Air</p>
+                    </div>
+                </div>
+
+                <div class="metric-card">
+                    <i class="fas fa-bolt card-icon"></i>
+                    <div class="card-data">
+                        <h3>2.15</h3>
+                        <p>Arus Output (A)</p>
+                    </div>
+                </div>
+
+                <div class="metric-card">
+                    <i class="fas fa-car-battery card-icon"></i>
+                    <div class="card-data">
+                        <h3>12.4</h3>
+                        <p>Tegangan Output (V)</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="bottom-row">
+                <div class="detail-box">
+                    <h4>Ultima Temperatura (°C)</h4>
+                    <div class="detail-content">
+                        <h1 class="big-number">15.13</h1>
+                        <ul class="detail-list">
+                            <li>Media: 15.23</li>
+                            <li>Media Giorno: 20.65</li>
+                            <li>Media Notte: 10.22</li>
+                            <li>Minima: 7.35</li>
+                            <li>Massima: 23.78</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="map-box">
+                    <div class="map-placeholder">
+                        <i class="fas fa-map-marker-alt" style="color: red; font-size: 2rem;"></i>
+                        <p>Area Lahan Bawang Merah</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
