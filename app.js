@@ -1,44 +1,60 @@
-function updateData() {
-    // Simulasi data
-    const data = {
-        // ... data lainnya tetap sama ...
-        suhu: (25 + Math.random() * 5).toFixed(2),
-        phAir: (6.5 + Math.random() * 1).toFixed(1),
-        kelembapan: (70 + Math.random() * 10).toFixed(0),
-        panelWatt: (50 + Math.random() * 20).toFixed(1),
-        panelVolt: (12 + Math.random() * 2).toFixed(1),
-        panelAmpere: (2 + Math.random() * 1).toFixed(2),
-        bateraiPersen: (85 + Math.random() * 5).toFixed(0),
-        bateraiVolt: (13.2 + Math.random() * 0.5).toFixed(1),
-        
-        // Logika Pompa: ON jika kelembapan < 75% (contoh simulasi)
-        pompaAktif: Math.random() > 0.5 
+// Fungsi untuk menghasilkan data simulasi
+function fetchData() {
+    // Di masa depan, ganti bagian ini dengan fetch('url-api-esp32')
+    const sensorData = {
+        suhu: (27 + Math.random() * 3).toFixed(2),
+        ph: (6.5 + Math.random() * 0.5).toFixed(1),
+        kelembapan: (75 + Math.random() * 5).toFixed(0),
+        watt: (45 + Math.random() * 10).toFixed(1),
+        voltPanel: (13.5 + Math.random() * 1).toFixed(1),
+        amperePanel: (3.2 + Math.random() * 0.5).toFixed(2),
+        bateraiPersen: (90 + Math.random() * 5).toFixed(0),
+        bateraiVolt: (12.6 + Math.random() * 0.2).toFixed(1),
+        pompa: Math.random() > 0.5 // Random ON atau OFF
     };
 
-    // Update elemen HTML lainnya
-    document.getElementById('suhu').innerText = data.suhu;
-    document.getElementById('ph-air').innerText = data.phAir;
-    document.getElementById('kelembapan').innerText = data.kelembapan;
-    document.getElementById('panel-watt').innerText = data.panelWatt + " W";
-    document.getElementById('panel-volt').innerText = data.panelVolt + " V";
-    document.getElementById('panel-ampere').innerText = data.panelAmpere + " A";
-    document.getElementById('baterai-persen').innerText = data.bateraiPersen + " %";
-    document.getElementById('baterai-volt').innerText = data.bateraiVolt + " V (Input)";
+    updateUI(sensorData);
+}
 
-    // Update Status Pompa
+// Fungsi untuk memperbarui tampilan dashboard
+function updateUI(data) {
+    // Update Teks
+    document.getElementById('suhu').innerText = data.suhu;
+    document.getElementById('ph-air').innerText = data.ph;
+    document.getElementById('kelembapan').innerText = data.kelembapan;
+    document.getElementById('panel-watt').innerText = data.watt + " W";
+    document.getElementById('panel-volt').innerText = data.voltPanel + " V";
+    document.getElementById('panel-ampere').innerText = data.amperePanel + " A";
+    document.getElementById('baterai-persen').innerText = data.bateraiPersen + " %";
+    document.getElementById('baterai-volt').innerText = data.bateraiVolt + " V";
+
+    // Update Status Pompa & Warna Kotak
     const pumpCard = document.getElementById('pump-card');
     const pumpStatus = document.getElementById('status-pompa');
-    const pumpSub = document.getElementById('pump-subtext');
+    const pumpMsg = document.getElementById('pump-msg');
 
-    if (data.pompaAktif) {
+    if (data.pompa) {
         pumpStatus.innerText = "ON";
-        pumpSub.innerText = "Sedang Menyiram...";
-        pumpCard.classList.add('card-pump-on');
+        pumpMsg.innerText = "Penyiraman Aktif";
+        pumpCard.classList.add('pump-on');
     } else {
         pumpStatus.innerText = "OFF";
-        pumpSub.innerText = "Sistem Standby";
-        pumpCard.classList.remove('card-pump-on');
+        pumpMsg.innerText = "Sistem Standby";
+        pumpCard.classList.remove('pump-on');
     }
 }
 
-// ... fungsi updateTime dan setInterval tetap sama ...
+// Update Waktu Real-time
+function showTime() {
+    const now = new Date();
+    const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit' };
+    document.getElementById('current-time').innerText = now.toLocaleDateString('id-ID', options);
+}
+
+// Jalankan sistem
+setInterval(fetchData, 3000); // Perbarui data tiap 3 detik
+setInterval(showTime, 1000);  // Perbarui jam tiap detik
+
+// Panggil pertama kali saat halaman dibuka
+fetchData();
+showTime();

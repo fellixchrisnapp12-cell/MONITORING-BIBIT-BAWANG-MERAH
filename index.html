@@ -25,58 +25,73 @@
         <main class="main-content">
             <header>
                 <div class="header-info">
-                    <h1>Dashboard Monitoring</h1>
+                    <h1>Mario's Dashboard</h1>
                     <p>Home / Dashboard Penyiraman Bawang Merah</p>
                 </div>
                 <div class="status-bar">
-                    <span id="current-time">Memuat waktu...</span>
+                    <p id="current-time">Memuat waktu...</p>
                 </div>
             </header>
 
             <section class="dashboard-grid">
-    <div class="card">
-        <div class="card-icon"><i class="fas fa-battery-three-quarters"></i></div>
-        <div class="card-data">
-            <h2 id="baterai-persen">0 %</h2>
-            <span class="label">Status Baterai</span>
-            <div class="sub-data">
-                <small id="baterai-volt">0 V (Input)</small>
-            </div>
-        </div>
-    </div>
+                
+                <div class="card card-highlight">
+                    <div class="card-icon"><i class="fas fa-thermometer-half"></i></div>
+                    <div class="card-data">
+                        <h2 id="suhu">0</h2>
+                        <span>Suhu Lingkungan (°C)</span>
+                    </div>
+                </div>
 
-    <div id="pump-card" class="card">
-        <div class="card-icon"><i class="fas fa-pump-soap"></i></div>
-        <div class="card-data">
-            <h2 id="status-pompa">OFF</h2>
-            <span class="label">Status Pompa</span>
-            <div class="sub-data">
-                <small id="pump-subtext">Sistem Standby</small>
-            </div>
-        </div>
-    </div>
-</section>
+                <div class="card">
+                    <div class="card-icon"><i class="fas fa-faucet"></i></div>
+                    <div class="card-data">
+                        <h2 id="ph-air">0</h2>
+                        <span>pH Air</span>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-icon"><i class="fas fa-water"></i></div>
+                    <div class="card-data">
+                        <h2 id="kelembapan">0</h2>
+                        <span>Kelembapan Tanah (%)</span>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-icon"><i class="fas fa-solar-panel"></i></div>
+                    <div class="card-data">
+                        <h2 id="panel-watt">0 W</h2>
+                        <span class="label">Panel Surya</span>
+                        <div class="sub-info">
+                            <span id="panel-volt">0 V</span> | <span id="panel-ampere">0 A</span>
+                        </div>
+                    </div>
+                </div>
 
                 <div class="card">
                     <div class="card-icon"><i class="fas fa-battery-three-quarters"></i></div>
                     <div class="card-data">
                         <h2 id="baterai-persen">0 %</h2>
-                        <span class="label">Status Baterai</span>
-                        <div class="sub-data">
-                            <small id="baterai-volt">0 V (Input)</small>
+                        <span class="label">Kapasitas Baterai</span>
+                        <div class="sub-info">
+                            <span id="baterai-volt">0 V (Input)</span>
                         </div>
                     </div>
-                    <div id="pump-card" class="card">
-    <div class="card-icon"><i class="fas fa-pump-soap"></i></div>
-    <div class="card-data">
-        <h2 id="status-pompa">OFF</h2>
-        <span class="label">Status Pompa</span>
-        <div class="sub-data">
-            <small id="pump-subtext">Sistem Standby</small>
-        </div>
-    </div>
-</div>
                 </div>
+
+                <div id="pump-card" class="card">
+                    <div class="card-icon"><i class="fas fa-faucet-drip"></i></div>
+                    <div class="card-data">
+                        <h2 id="status-pompa">OFF</h2>
+                        <span class="label">Status Pompa</span>
+                        <div class="sub-info">
+                            <span id="pump-msg">Sistem Standby</span>
+                        </div>
+                    </div>
+                </div>
+
             </section>
         </main>
     </div>
