@@ -6,6 +6,7 @@
     <title>Monitoring Bawang Merah</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
 
@@ -31,7 +32,7 @@
         <main class="main-content">
             <header class="top-header">
                 <div class="page-title">
-                    <div class="logo">evja</div>
+                    <div class="logo">Monitoring Bibit Bawang Merah</div>
                     <a href="#" class="logout"><i class="fas fa-sign-out-alt"></i> Log out</a>
                 </div>
             </header>
@@ -66,7 +67,6 @@
                         <p>Suhu (°C)</p>
                     </div>
                 </div>
-
                 <div class="metric-card">
                     <i class="fas fa-leaf card-icon"></i>
                     <div class="card-data">
@@ -74,7 +74,6 @@
                         <p>Kelembapan Tanah (%)</p>
                     </div>
                 </div>
-
                 <div class="metric-card">
                     <i class="fas fa-tint card-icon"></i>
                     <div class="card-data">
@@ -82,7 +81,6 @@
                         <p>pH Air</p>
                     </div>
                 </div>
-
                 <div class="metric-card">
                     <i class="fas fa-bolt card-icon"></i>
                     <div class="card-data">
@@ -90,7 +88,6 @@
                         <p>Arus Output (A)</p>
                     </div>
                 </div>
-
                 <div class="metric-card">
                     <i class="fas fa-car-battery card-icon"></i>
                     <div class="card-data">
@@ -100,24 +97,23 @@
                 </div>
             </section>
 
-            <section class="bottom-row">
-                <div class="detail-box">
-                    <h4>Ultima Temperatura (°C)</h4>
-                    <div class="detail-content">
-                        <h1 class="big-number">15.13</h1>
-                        <ul class="detail-list">
-                            <li>Media: 15.23</li>
-                            <li>Media Giorno: 20.65</li>
-                            <li>Media Notte: 10.22</li>
-                            <li>Minima: 7.35</li>
-                            <li>Massima: 23.78</li>
-                        </ul>
+            <section class="bottom-row graphs-row">
+                <div class="graph-box">
+                    <h4>Tren Sensor Suhu (°C)</h4>
+                    <div class="chart-container">
+                        <canvas id="tempChart"></canvas>
                     </div>
                 </div>
-                <div class="map-box">
-                    <div class="map-placeholder">
-                        <i class="fas fa-map-marker-alt" style="color: red; font-size: 2rem;"></i>
-                        <p>Area Lahan Bawang Merah</p>
+                <div class="graph-box">
+                    <h4>Tren Kelembapan Tanah (%)</h4>
+                    <div class="chart-container">
+                        <canvas id="humidChart"></canvas>
+                    </div>
+                </div>
+                <div class="graph-box">
+                    <h4>Tren pH Air</h4>
+                    <div class="chart-container">
+                        <canvas id="phChart"></canvas>
                     </div>
                 </div>
             </section>
